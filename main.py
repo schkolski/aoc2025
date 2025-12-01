@@ -1,15 +1,14 @@
-# This is a sample Python script.
+from pathlib import Path
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from day1 import solve as day1_solve
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+BASE_PATH = Path(__file__).parent
 
 
-# Press the green button in the gutter to run the script.
+def print_solutions():
+    print("Solutions:")
+    print("    Day 1:", day1_solve(BASE_PATH / "data" / "day1_input.txt"))
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
+    print_solutions()

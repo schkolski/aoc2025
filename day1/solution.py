@@ -1,5 +1,6 @@
 import enum
 from dataclasses import dataclass
+from pathlib import Path
 
 MAX_VALUE = 100
 
@@ -79,3 +80,23 @@ class Vault:
 
     def __repr__(self):
         return f'Vault(state={self.state}, zeros_count={self.zeros_count}, over_zero_count={self.over_zero_count})'
+
+
+@dataclass
+class Solution:
+    part_one: int
+    part_two: int
+
+
+def solve(filepath: Path) -> Solution:
+    vault = Vault()
+    with open(filepath, 'r') as f:
+        for line in f:
+            cmd_text = line.strip()
+            cmd = Command.from_text(cmd_text)
+            vault.turn(cmd)
+
+    return Solution(
+        part_one=vault.zeros_count,
+        part_two=vault.over_zero_count
+    )
