@@ -297,3 +297,6 @@ __marimo__/
 #/.idea/inspectionProfiles/profiles_settings.xml
 #/.idea/vcs.xml
 #/.idea/inspectionProfiles/Project_Default.xml
+
+# ignoring input data
+data/

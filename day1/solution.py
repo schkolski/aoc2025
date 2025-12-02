@@ -87,6 +87,9 @@ class Solution:
     part_one: int
     part_two: int
 
+    def __repr__(self):
+        return f'Solution - Day 1\n\tPart 1: {self.part_one}\n\tPart 2: {self.part_two}'
+
 
 def solve(filepath: Path) -> Solution:
     vault = Vault()

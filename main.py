@@ -1,14 +1,31 @@
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 from day1 import solve as day1_solve
+from day2 import solve as day2_solve
 
-BASE_PATH = Path(__file__).parent
+DATA_PATH = Path(__file__).parent / 'data'
 
 
-def print_solutions():
+@dataclass
+class Solver:
+    solve: Callable
+    day: str
+
+
+def print_solutions(solvers: list[Solver]):
     print("Solutions:")
-    print("    Day 1:", day1_solve(BASE_PATH / "data" / "day1_input.txt"))
+    print()
+    for solver in solvers:
+        print(solver.solve(filepath=DATA_PATH / f"{solver.day}_input.txt"))
+        print('-' * 30)
 
 
 if __name__ == '__main__':
-    print_solutions()
+    print_solutions(
+        solvers=[
+            Solver(solve=day1_solve, day='day1'),
+            Solver(solve=day2_solve, day='day2'),
+        ]
+    )
