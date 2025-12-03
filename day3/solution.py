@@ -17,6 +17,7 @@ class BatteryBank:
         self._size = len(batteries)
 
     def max_jolt(self, k) -> int:
+        # TODO: Cache results for performance improvement on repeated calls
         n_batteries = len(self.batteries)
         dp = [[0] * (k + 1) for _ in range(n_batteries + 1)]
 
