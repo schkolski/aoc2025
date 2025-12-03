@@ -4,6 +4,7 @@ from typing import Callable
 
 from day1 import solve as day1_solve
 from day2 import solve as day2_solve
+from day3 import solve as day3_solve
 
 DATA_PATH = Path(__file__).parent / 'data'
 
@@ -27,5 +28,6 @@ if __name__ == '__main__':
         solvers=[
             Solver(solve=day1_solve, day='day1'),
             Solver(solve=day2_solve, day='day2'),
+            Solver(solve=day3_solve, day='day3'),
         ]
     )
