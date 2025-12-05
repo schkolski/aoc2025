@@ -12,16 +12,59 @@ class Solution:
 
 
 @dataclass
-class Something:
-    pass
+class PrintingDepartmentMap:
+    grid: list[str]
+
+    def moveable_positions(self):
+        count = 0
+        n, m = len(self.grid), len(self.grid[0])
+        for i in range(0, n):
+            for j in range(m):
+                if self.grid[i][j] == '@' and self._is_moveable(i, j, n, m):
+                    count += 1
+        return count
+
+    def trim(self):
+        count = 0
+        n, m = len(self.grid), len(self.grid[0])
+
+        while True:
+            removable = set()
+            for i in range(0, n):
+                for j in range(m):
+                    if self.grid[i][j] == '@' and self._is_moveable(i, j, n, m):
+                        removable.add((i, j))
+            if not removable:
+                break
+
+            count += len(removable)
+            for i, j in removable:
+                str_i = self.grid[i]
+                self.grid[i] = str_i[:j] + '.' + str_i[j + 1:]
+        return count
+
+    def _is_moveable(self, i, j, n, m) -> bool:
+        all_directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+        count_rolls = 0
+        for di, dj in all_directions:
+            ni, mj = i + di, j + dj
+            if not (0 <= ni < n and 0 <= mj < m):
+                continue
+            if self.grid[ni][mj] == '@':
+                count_rolls += 1
+
+        return count_rolls < 4
 
 
-def _read_input(file_path) -> list[Something]:
-    pass
+def _read_input(file_path) -> PrintingDepartmentMap:
+    with open(file_path) as file:
+        grid = [line.strip() for line in file]
+        return PrintingDepartmentMap(grid=grid)
 
 
 def solve(filepath: Path) -> Solution:
-    pass
+    pd_map = _read_input(filepath)
+    return Solution(part_one=pd_map.moveable_positions(), part_two=pd_map.trim())
 
 
 if __name__ == '__main__':
