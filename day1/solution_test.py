@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from pathlib import Path
 
 import pytest
 
+from data import DATA_PATH
 from .solution import Command, Vault, CommandDirection
 
 
@@ -37,7 +37,7 @@ def example_data() -> DataSet:
 @pytest.fixture(scope='session')
 def real_data() -> DataSet:
     commands = []
-    filepath = Path('.') / 'data' / 'day1_input.txt'
+    filepath = DATA_PATH / 'day1_input.txt'
     with open(filepath, 'r') as f:
         for line in f:
             cmd_text = line.strip()
