@@ -32,10 +32,21 @@ open-report:
 	@# Uses 'open' on Mac or 'xdg-open' on Linux
 	@(open htmlcov/index.html || xdg-open htmlcov/index.html) 2>/dev/null || echo "Open htmlcov/index.html manually."
 
-# 5. Help menu
+# 5. Create a new day scaffold
+# Usage: make init day=5
+init:
+	@if [ -z "$(day)" ]; then \
+		echo "❌ Error: Missing day argument. Usage: make init day=5"; \
+		exit 1; \
+	fi
+	@echo "📅 Initializing Day $(day)..."
+	python scripts/init_day.py $(day)
+
+# 6. Help menu
 help:
 	@echo "Available commands:"
 	@echo "  make run-coverage        : Run tests with terminal coverage report"
 	@echo "  make run-coverage-html   : Run tests and create HTML report"
 	@echo "  make run-clean-coverage  : Delete all coverage artifacts"
 	@echo "  make open-report         : Open the HTML report in your browser"
+	@echo "  make init day=N          : Initialize boilerplate for Day N (e.g., make init day=5)"
