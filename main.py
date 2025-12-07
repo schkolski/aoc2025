@@ -8,6 +8,7 @@ from day3 import solve as day3_solve
 from day4 import solve as day4_solve
 from day5 import solve as day5_solve
 from day6 import solve as day6_solve
+from day7 import solve as day7_solve
 
 DATA_PATH = Path(__file__).parent / 'data'
 
@@ -35,5 +36,6 @@ if __name__ == '__main__':
             Solver(solve=day4_solve, day='day4'),
             Solver(solve=day5_solve, day='day5'),
             Solver(solve=day6_solve, day='day6'),
+            Solver(solve=day7_solve, day='day7'),
         ]
     )
