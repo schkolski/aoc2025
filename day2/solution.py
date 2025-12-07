@@ -31,11 +31,6 @@ def _read_input(file_path) -> list[Range]:
 
 
 def _build_invalid_ids(*, max_digits: int = 6, max_reps: int = 2) -> SortedList[int]:
-    if max_digits < 2:
-        raise ValueError('max_digits must be >= 2')
-    if max_reps < 2:
-        raise ValueError('max_reps must be >= 2')
-
     invalid_ids = set()
     max_value = int('9' * (max_digits // 2))
     for k in range(2, max_reps + 1):
