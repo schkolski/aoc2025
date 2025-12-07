@@ -39,6 +39,7 @@ def test_overlapping_splits():
     assert tm.splits_count() == 3
     assert tm.total_paths() == 4
 
+
 def test_new_split_overlapping_with_falldown_path():
     tm = TachyonManifold(lines=[
         "...S...",
@@ -49,3 +50,24 @@ def test_new_split_overlapping_with_falldown_path():
     ])
     assert tm.splits_count() == 3
     assert tm.total_paths() == 4
+
+
+def test_left_boundary():
+    tm = TachyonManifold(lines=[
+        ".S...",
+        ".^...",
+        "^.^..",
+        ".....",
+    ])
+    assert tm.splits_count() == 3
+    assert tm.total_paths() == 3
+
+
+def test_right_boundary():
+    tm = TachyonManifold(lines=[
+        "..S",
+        "^.^",
+        "...",
+    ])
+    assert tm.splits_count() == 1
+    assert tm.total_paths() == 1
