@@ -1,0 +1,23 @@
+[tool.pytest.ini_options]
+addopts = "--cov=. --cov-report term-missing"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def solve",
+    "def _read_input",
+    "def read_input",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "main.py"
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "main.py"
+]
+
+python_files = ["test_*.py", "*_test.py"]
+
+
