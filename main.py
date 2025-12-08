@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import partial
 from pathlib import Path
 from typing import Callable
 
@@ -9,6 +10,9 @@ from day4 import solve as day4_solve
 from day5 import solve as day5_solve
 from day6 import solve as day6_solve
 from day7 import solve as day7_solve
+from day8 import solve as day8_solve
+
+
 
 DATA_PATH = Path(__file__).parent / 'data'
 
@@ -37,5 +41,6 @@ if __name__ == '__main__':
             Solver(solve=day5_solve, day='day5'),
             Solver(solve=day6_solve, day='day6'),
             Solver(solve=day7_solve, day='day7'),
+            Solver(solve=partial(day8_solve, k=1000), day='day8'),
         ]
     )
