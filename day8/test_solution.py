@@ -15,16 +15,16 @@ def real_data():
 
 
 def test_part_1_example(example_data):
-    assert False  # Implement test for part 1 example
+    assert solve_part1(example_data, k=10) == 40
 
 
 def test_part_1_real(real_data):
-    assert False  # Implement test for part 1 real
+    assert solve_part1(real_data, k=1000) == 54180
 
 
 def test_part_2_example(example_data):
-    assert False  # Implement test for part 2 example
+    assert solve_part2(example_data) == 25272
 
 
 def test_part_2_real(real_data):
-    assert False  # Implement test for part 2 real
+    assert solve_part2(real_data) == 25325968
